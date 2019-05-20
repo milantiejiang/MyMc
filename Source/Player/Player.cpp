@@ -240,40 +240,53 @@ void Player::keyboardInput()
     }
 }
 
-void Player::mouseInput(const sf::RenderWindow& window)
-{
+void Player::mouseInput(const sf::RenderWindow& window){
     static bool useMouse = true;
     static ToggleKey useMouseKey (sf::Keyboard::L);
 
-    if (useMouseKey.isKeyPressed())
-    {
+    if (useMouseKey.isKeyPressed()){
+        //按L键锁定鼠标
         useMouse = !useMouse;
     }
 
-    if (!useMouse)
-    {
+    if (!useMouse){
         return;
     }
 
+    static sf::Vector2i center = {
+            static_cast<int>(window.getSize().x / 2),
+            static_cast<int>(window.getSize().y / 2)
+    };
+
     static float const BOUND = 89.9999;
     static auto lastMousePosition = sf::Mouse::getPosition(window);
-    auto change = sf::Mouse::getPosition() - lastMousePosition;
+    auto change = sf::Mouse::getPosition(window) - lastMousePosition;
 
-    rotation.y += change.x * 0.05f;
-    rotation.x += change.y * 0.05f;
+    rotation.y += change.x * 0.05;
+    rotation.x += change.y * 0.05;
 
-    if      (rotation.x >  BOUND) rotation.x =  BOUND;
-    else if (rotation.x < -BOUND) rotation.x = -BOUND;
+    if(rotation.x>BOUND){
+        rotation.x=BOUND;
+    }else if (rotation.x<-BOUND){
+        rotation.x = -BOUND;
+    }
+    if(rotation.y>360){
+        rotation.y = 0;
+    }else if(rotation.y<0){
+        rotation.y = 360;
+    }
 
-    if      (rotation.y >  360) rotation.y = 0;
-    else if (rotation.y <  0)   rotation.y = 360;
+    auto windowSize = window.getSize();
 
-    auto cx = static_cast<int>(window.getSize().x / 2);
-    auto cy = static_cast<int>(window.getSize().y / 2);
-
-    sf::Mouse::setPosition({cx, cy}, window);
-
-    lastMousePosition = sf::Mouse::getPosition();
+    int maxRadius = glm::min(windowSize.x, windowSize.y) / 3;
+    glm::vec2 delta = glm::vec2(lastMousePosition.x, lastMousePosition.y) - glm::vec2(center.x, center.y);
+    float len = glm::length(delta);
+    if (len > maxRadius) {
+        sf::Mouse::setPosition(sf::Vector2i((int)center.x, (int)center.y), window);
+        lastMousePosition = center;
+    } else {
+        lastMousePosition = sf::Mouse::getPosition(window);
+    }
 }
 
 void Player::draw(RenderMaster& master)

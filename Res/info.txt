@@ -1,26 +1,23 @@
 
-============WELCOME TO MINECRAFT IN A WEEK============
-This is a very simple Minecraft clone (mostly) created in one week
+============ 欢迎来到我的世界 ============
+游戏操作手册
+
+WASD 			- 前后左右移动
+
+空格键 			- 往上跳
+Shift键 			- 下蹲
+
+按住CTRL 		- 持续加速
+
+鼠标 			- 移动鼠标查看周围世界
+
+左击 		- 鼠标左击销毁方块
+右击	- 鼠标右击置放方块
+
+L 				- 锁定/解锁 鼠标
+
+esc 			- 按esc退出游戏
 
 
-Because it was made in a week, some major features were missing:
--Level loading (Chunks do not save! So, I wouldn't commit to a build here for now)
--Caves
--Mobs
--Crafting
+============按回车键开始游戏 ============
 
-However, I did manage to implement some other important things:
--World generation
--Simple resource collection
--Biomes
--Collision detection
--Block breaking/ placing
-
-
-For now, the game it pretty much entirely a community-driven project.
-Source code can be found at https://github.com/Hopson97/MineCraft-One-Week-Challenge
-Feel free to contribute!
-
-Please view 'controls.txt for controls!
-
-============Press enter to begin ============

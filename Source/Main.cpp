@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "Util/FileUtil.h"
+
 #include "Config.h"
 
 #ifdef __WIN32
@@ -37,7 +39,7 @@ namespace
 {
     void loadConfig(Config& config)
     {
-        std::ifstream configFile("config.txt");
+        std::ifstream configFile(getExeDir("config.txt"));
         std::string key;
 
         if (configFile.is_open())
@@ -79,13 +81,14 @@ namespace
     void displayInfo()
     {
         std::ifstream inFile;
-        inFile.open("Res/info.txt");
+        inFile.open(getExeDir("Res/info.txt"));
         std::string line;
         while (std::getline(inFile, line))
         {
             std::cout << line << "\n";
         }
     }
+
 }
 
 

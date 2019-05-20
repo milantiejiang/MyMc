@@ -1,10 +1,11 @@
 #include "BlockData.h"
 
 #include <fstream>
+#include "../../Util/FileUtil.h"
 
 BlockData::BlockData(const std::string& fileName)
 {
-    std::ifstream inFile("Res/Blocks/" + fileName + ".block");
+    std::ifstream inFile(getExeDir("Res/Blocks/" + fileName + ".block"));
 
     if (!inFile.is_open())
     {

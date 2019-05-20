@@ -1,10 +1,11 @@
 #include "TextureAtlas.h"
 #include <array>
+#include "../Util/FileUtil.h"
 
 TextureAtlas::TextureAtlas(const std::string& textureFileName)
 {
     sf::Image i;
-    if (!i.loadFromFile("Res/Textures/" + textureFileName + ".png"))
+    if (!i.loadFromFile(getExeDir("Res/Textures/" + textureFileName + ".png")))
     {
         throw std::runtime_error("Unable to open image: " + textureFileName);
     }

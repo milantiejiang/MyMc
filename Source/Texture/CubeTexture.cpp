@@ -1,4 +1,6 @@
+#include <iostream>
 #include "CubeTexture.h"
+#include "../Util/FileUtil.h"
 
 
 CubeTexture::CubeTexture(const std::array<std::string, 6>& files)
@@ -21,7 +23,7 @@ void CubeTexture::loadFromFiles(const std::array<std::string, 6>& files)
     {
         auto& str = files[i];
         sf::Image image;
-        if (!image.loadFromFile("Res/Textures/" + str + ".png"))
+        if (!image.loadFromFile(getExeDir("Res/Textures/" + str + ".png")))
         {
             throw std::runtime_error("Unable to load CubeTexture Part: " + str);
         }
