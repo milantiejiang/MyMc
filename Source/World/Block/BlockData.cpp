@@ -1,7 +1,8 @@
 #include "BlockData.h"
 
 #include <fstream>
-#include "../../Util/FileUtil.h"
+//#include "../../Util/FileUtil.h"
+extern std::string getExeDir(const std::string &ph);
 
 BlockData::BlockData(const std::string& fileName)
 {

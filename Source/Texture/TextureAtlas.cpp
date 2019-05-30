@@ -1,6 +1,7 @@
 #include "TextureAtlas.h"
 #include <array>
-#include "../Util/FileUtil.h"
+//#include "../Util/FileUtil.h"
+extern std::string getExeDir(const std::string &ph);
 
 TextureAtlas::TextureAtlas(const std::string& textureFileName)
 {

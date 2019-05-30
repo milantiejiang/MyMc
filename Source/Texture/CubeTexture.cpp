@@ -1,7 +1,8 @@
 #include <iostream>
 #include "CubeTexture.h"
-#include "../Util/FileUtil.h"
+//#include "../Util/FileUtil.h"
 
+extern std::string getExeDir(const std::string &ph);
 
 CubeTexture::CubeTexture(const std::array<std::string, 6>& files)
 {

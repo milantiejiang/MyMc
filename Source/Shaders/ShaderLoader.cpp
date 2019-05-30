@@ -5,6 +5,8 @@
 #include "../glad/glad.h"
 #include <stdexcept>
 
+extern std::string getExeDir(const std::string &ph);
+
 namespace
 {
     GLuint compileShader(const GLchar* source, GLenum shaderType)
@@ -43,8 +45,8 @@ namespace
 GLuint loadShaders(const std::string& vertexShader,
                  const std::string& fragmentShader)
 {
-    auto vertexSource   = getFileContents("/Users/milantiejiang/CLionProjects/MineCraft-One-Week-Challenge/Shaders/" + vertexShader     + ".vert");
-    auto fragmentSource = getFileContents("/Users/milantiejiang/CLionProjects/MineCraft-One-Week-Challenge/Shaders/" + fragmentShader   + ".frag");
+    auto vertexSource   = getFileContents(getExeDir("Shaders/") + vertexShader     + ".vert");
+    auto fragmentSource = getFileContents(getExeDir("Shaders/") + fragmentShader   + ".frag");
 
     auto vertexShaderID     = compileShader(vertexSource.c_str(),   GL_VERTEX_SHADER);
     auto fragmentShaderID   = compileShader(fragmentSource.c_str(), GL_FRAGMENT_SHADER);

@@ -5,8 +5,7 @@
 unsigned int g_X;
 unsigned int g_Y;
 
-Context::Context(const Config& config)
-{
+Context::Context(const Config &config) {
     sf::ContextSettings settings;
     settings.antialiasingLevel = 0;
     settings.majorVersion = 3;
@@ -15,19 +14,16 @@ Context::Context(const Config& config)
     settings.stencilBits = 8;
     //settings.attributeFlags = sf::ContextSettings::Core;
     //This is no longer necessary due to the Mac Support update.
-    
-    if(config.isFullscreen)
-    {
+
+    if (config.isFullscreen) {
         window.create(sf::VideoMode::getDesktopMode(), "MC", sf::Style::Fullscreen, settings);
-    }
-    else
-    {
+    } else {
         sf::VideoMode winMode(config.windowX, config.windowY);
         window.create(winMode, "MC", sf::Style::Close, settings);
     }
 
     if (!gladLoadGL()) {
-        
+
         exit(-1);
     }
 

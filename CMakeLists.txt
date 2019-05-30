@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 #Enable debug symbols
 if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose debug or release" FORCE)
-endif()
+endif ()
 
 project(MC)
 
@@ -38,3 +38,4 @@ target_link_libraries(MC Threads::Threads ${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 #Copy resources
 file(COPY ${CMAKE_SOURCE_DIR}/Res DESTINATION ${CMAKE_BINARY_DIR})
 file(COPY ${CMAKE_SOURCE_DIR}/config.txt DESTINATION ${CMAKE_BINARY_DIR})
+file(COPY ${CMAKE_SOURCE_DIR}/Shaders DESTINATION ${CMAKE_BINARY_DIR})

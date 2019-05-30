@@ -7,15 +7,12 @@
 
 #include <iostream>
 
-void ChunkRenderer::add(const ChunkMesh& mesh)
-{
+void ChunkRenderer::add(const ChunkMesh &mesh) {
     m_chunks.push_back(&mesh.getModel().getRenderInfo());
 }
 
-void ChunkRenderer::render(const Camera& camera)
-{
-    if (m_chunks.empty())
-    {
+void ChunkRenderer::render(const Camera &camera) {
+    if (m_chunks.empty()) {
         return;
     }
 
@@ -27,8 +24,7 @@ void ChunkRenderer::render(const Camera& camera)
 
     m_shader.loadProjectionViewMatrix(camera.getProjectionViewMatrix());
 
-    for (auto mesh : m_chunks)
-    {
+    for (auto mesh : m_chunks) {
         GL::bindVAO(mesh->vao);
         GL::drawElements(mesh->indicesCount);
     }
